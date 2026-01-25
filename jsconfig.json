@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@ui/*": ["cypress/support/ui/*"],
+      "@tasks/*": ["cypress/support/tasks/*"],
+      "@questions/*": ["cypress/support/questions/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

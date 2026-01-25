@@ -1,0 +1,22 @@
+{
+  "name": "cypress",
+  "version": "1.0.0",
+  "description": "ejercicio de aprendizaje cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@babel/core": "^7.28.6",
+    "@babel/preset-env": "^7.28.6",
+    "@cypress/webpack-preprocessor": "^7.0.2",
+    "babel-loader": "^10.0.0",
+    "cypress": "^15.9.0",
+    "cypress-real-events": "^1.15.0",
+    "webpack": "^5.104.1"
+  }
+}
