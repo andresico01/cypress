@@ -4,7 +4,8 @@
     "paths": {
       "@ui/*": ["cypress/support/ui/*"],
       "@tasks/*": ["cypress/support/tasks/*"],
-      "@questions/*": ["cypress/support/questions/*"]
+      "@questions/*": ["cypress/support/questions/*"],
+      "@utils/*": ["cypress/support/utils/*"]
     }
   },
   "exclude": ["node_modules", "dist"]

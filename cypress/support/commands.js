@@ -23,3 +23,19 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// cypress/support/commands.js
+// cypress/support/commands.js
+
+Cypress.Commands.add('evidence', (nameTask) => {
+  Cypress.log({
+    name: '📸 TASK',
+    message: nameTask,
+  });
+
+
+  cy.screenshot(`Task-${nameTask}`, { 
+      capture: 'runner', 
+      overwrite: false 
+  });
+});

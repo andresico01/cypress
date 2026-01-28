@@ -16,6 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 import "cypress-real-events/support";
+import 'cypress-mochawesome-reporter/register';
 Cypress.on('uncaught:exception', (err, runnable) => {
   // Verificamos si el error contiene el mensaje que te está molestando
   if (err.message.includes('Could not clear consent from root domain')) {

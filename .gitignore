@@ -1,0 +1,13 @@
+# Dependencias de Node (¡Nunca subir esto!)
+node_modules/
+
+# Evidencias de Cypress (Fotos y Videos)
+cypress/screenshots/
+cypress/videos/
+
+# Reportes (Mochawesome u otros)
+cypress/reports/
+mochawesome-report/
+
+# Variables de entorno (Claves secretas)
+.env

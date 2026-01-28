@@ -16,6 +16,7 @@
     "@cypress/webpack-preprocessor": "^7.0.2",
     "babel-loader": "^10.0.0",
     "cypress": "^15.9.0",
+    "cypress-mochawesome-reporter": "^4.0.2",
     "cypress-real-events": "^1.15.0",
     "webpack": "^5.104.1"
   }
