@@ -2,6 +2,13 @@ const { defineConfig } = require("cypress");
 const webpackPreprocessor = require('@cypress/webpack-preprocessor');
 
 module.exports = defineConfig({
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    charts: true,             // Gráficos bonitos
+    reportPageTitle: 'Reporte de Pruebas',
+    embeddedScreenshots: true, // Fotos incrustadas (vital para compartir)
+    inlineAssets: true,        // Todo en un solo HTML
+  },
   e2e: {
     setupNodeEvents(on, config) {
       const options = {
@@ -9,8 +16,10 @@ module.exports = defineConfig({
         watchOptions: {},
       };
       on('file:preprocessor', webpackPreprocessor(options));
+      require('cypress-mochawesome-reporter/plugin')(on);
       return config;
     },
+    
     baseUrl: 'https://www.leagueoflegends.com/', // Tu URL
     viewportWidth: 1920,
     viewportHeight: 1080,

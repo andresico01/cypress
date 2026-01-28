@@ -7,7 +7,8 @@ module.exports = {
     alias: {
       '@ui': path.resolve(__dirname, 'cypress/support/ui'),
       '@tasks': path.resolve(__dirname, 'cypress/support/tasks'),
-      '@questions': path.resolve(__dirname, 'cypress/support/questions')
+      '@questions': path.resolve(__dirname, 'cypress/support/questions'),
+      '@utils': path.resolve(__dirname, 'cypress/support/utils')
     },
     extensions: ['.ts', '.js']
   },

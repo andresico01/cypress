@@ -1,3 +1,5 @@
+import {CreateTask} from '@utils/imageEvidence'
+
 /**
      * count the number of element with the same text value and also same element.
      *
@@ -35,11 +37,11 @@ export const AliasForWebElement = (elementSelector,keyWord,alias) => {
 }
 
 
-export const showList = (elementSelector,textElement) => {
+export const showList = CreateTask('Desplegar lista de opciones',(elementSelector,textElement) => {
     cy.log(`Thinking: dar click sobre boton {${textElement}}`)
     cy.get(elementSelector).contains(textElement).realHover();
 
-}    
+});
 
 
 export const click = (elementSelector,textElement) => {
@@ -48,7 +50,7 @@ export const click = (elementSelector,textElement) => {
 
 }    
 
-export const clickSubmenuOption = (optionText) => {
+export const mechanicalClickOption = (optionText) => {
     cy.log(`Thinking: Clic forzado en la opción oculta {${optionText}}`);
     
     // { force: true } desactiva la comprobación de visibilidad.

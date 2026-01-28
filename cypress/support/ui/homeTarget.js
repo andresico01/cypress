@@ -4,7 +4,4 @@ export const IMAGE_POPPY = 'img.sc-58849faf-0.cSsvPi.sc-2a9d3880-0.iOotgw.sc-1f4
 export const ASSASIN_AKALY = 'div.icon-tab-media-subtitle';
 export const DIVS_ELEMENT = '.cta-content';
 export const NOTICIAS_LIST = '[data-testid="riotbar:desktopNav:link-internal-news"] > p';
-//export const NOTICIAS_ELEMENT = '#riotbar-center-content > div.MjhZw8jE5TxZg2FVLIOErQ\\=\\=.riotbar-desktop-navigation-wrapper > div:nth-child(3) > a > ul > li';
 export const NOTICIAS_ELEMENT = '[data-testid="riotbar:desktopNav:link-internal-news"] > ul > li > a';
-//document.querySelector("#riotbar-center-content > div.MjhZw8jE5TxZg2FVLIOErQ\\=\\=.riotbar-desktop-navigation-wrapper > div:nth-child(3) > a > p > svg.Keqbnicv6fO1CTrVF-g5Rg\\=\\=.Z-Mbz2de33EBshUmlYmWVQ\\=\\=")
-

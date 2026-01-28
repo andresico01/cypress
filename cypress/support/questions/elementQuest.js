@@ -1,16 +1,4 @@
-/**
-     * Verify the element exist in the DOM .
-     *
-     * @example
-     * ✅ IDs: ElementExit('#mi-boton')
-     * ✅ Clases: ElementExit('.btn-primary')
-     * ✅ Atributos: ElementExit('[data-testid="login"]')
-     * ✅ Combinaciones: ElementExit('form > div input[name="user"]')
-     */
-export const ElementExit = (elementSelector) => {
-    cy.log(`Thinking: Verificando que el elemento ${elementSelector} ya existe...`);
-    return cy.get(elementSelector).should('exist');
-}
+import {CreateTask} from '@utils/imageEvidence'
 
 /**
      * Verify the element exist in the DOM .
@@ -21,9 +9,28 @@ export const ElementExit = (elementSelector) => {
      * ✅ Atributos: ElementExit('[data-testid="login"]')
      * ✅ Combinaciones: ElementExit('form > div input[name="user"]')
      */
-export const ElementNotExit = (elementSelector,textElement) => {
+export const ElementExit = CreateTask('Verificar que el elemento exista',(elementSelector) => {
     cy.log(`Thinking: Verificando que el elemento ${elementSelector} ya existe...`);
-    return cy.get(elementSelector).contains(textElement).should('not.exist');
+    return cy.get(elementSelector)
+    .scrollIntoView({ block: 'center', inline: 'center' })
+    .first()
+    .should('exist');
+});
+
+/**
+     * Verify the element not exist in the DOM .
+     *
+     * @example
+     * ✅ IDs: ElementExit('#mi-boton')
+     * ✅ Clases: ElementExit('.btn-primary')
+     * ✅ Atributos: ElementExit('[data-testid="login"]')
+     * ✅ Combinaciones: ElementExit('form > div input[name="user"]')
+     */
+export const ElementNotExit = (elementSelector,textElement) => {
+    cy.log(`Thinking: Verificando que el elemento ${elementSelector} no existe...`);
+    return cy.get(elementSelector)
+    .contains(textElement)
+    .should('not.exist');
 }
 
 
@@ -37,10 +44,13 @@ export const ElementNotExit = (elementSelector,textElement) => {
      * ✅ Combinaciones: ElementVisible('form > div input[name="user"]')
      * ✅ Alias: ElementVisible(AliasDefinido)
      */
-export const ElementVisible = (elementSelector) => {
-cy.log(`Thinking: Verificando que el elemento ${elementSelector} es visible ...`);
-    return cy.get(elementSelector).should('be.visible');
-}
+export const ElementVisible = CreateTask('Verificar que el elemento sea visible',(elementSelector) => {
+     cy.log(`Thinking: Verificando que el elemento ${elementSelector} es visible ...`);
+     return cy.get(elementSelector)
+     .scrollIntoView({ block: 'center', inline: 'center' })
+     .first()
+     .should('be.visible');
+});
 
 /**
      * Verify the element is not visible in the DOM .
@@ -53,8 +63,10 @@ cy.log(`Thinking: Verificando que el elemento ${elementSelector} es visible ...`
      * ✅ Alias: ElementNotVisible(AliasDefinido)
      */
 export const ElementNotVisible = (elementSelector,textElement) => {
-cy.log(`Thinking: Verificando que el elemento ${elementSelector} no es visible ...`);
-    return cy.get(elementSelector).contains(textElement).should('not.be.visible');
+     cy.log(`Thinking: Verificando que el elemento ${elementSelector} no es visible ...`);
+     return cy.get(elementSelector)
+     .contains(textElement)
+     .should('not.be.visible');
 }
 
 /**
@@ -66,10 +78,14 @@ cy.log(`Thinking: Verificando que el elemento ${elementSelector} no es visible .
      * ✅ Atributos: VisibleText('[data-testid="login"]',keyWord)
      * ✅ Combinaciones: VisibleText('form > div input[name="user"]',keyWord)
      */
-export const VisibleText = (elementSelector,keyWord) => {
-cy.log(`Thinking: Verificando que el elemento ${elementSelector} contenga el texto {${keyWord}} y sea visible...`);
-    return cy.get(elementSelector).contains(keyWord).should('be.visible');
-}
+export const VisibleText = CreateTask('Verificar que el texto sea visible',(elementSelector,keyWord) => {
+     cy.log(`Thinking: Verificando que el elemento ${elementSelector} contenga el texto {${keyWord}} y sea visible...`);
+     return cy.get(elementSelector)
+     .contains(keyWord)
+     .first()
+     .scrollIntoView({ block: 'center', inline: 'center' })
+     .should('be.visible');
+});
 
 /**
      * Verify the element type image is visible in the DOM .
@@ -80,14 +96,14 @@ cy.log(`Thinking: Verificando que el elemento ${elementSelector} contenga el tex
      * ✅ Atributos: CheckImageTipy('[data-testid="login"]',imageType)
      * ✅ Combinaciones: CheckImageTipy('form > div input[name="user"]',imageType)
      */
-export const CheckImageTipy = (elementSelector, imageType ) => {
-cy.log(`Thinking: Verificando que el elemento ${elementSelector} sea una imagen de tipo {${imageType}} y sea visible...`);
+export const CheckImageType = CreateTask('Verificar que el elemento sea una imagen de tipo',(elementSelector, imageType ) => {
+     cy.log(`Thinking: Verificando que el elemento ${elementSelector} sea una imagen de tipo {${imageType}} y sea visible...`);
 
-cy.get(elementSelector)
-  .should('be.visible') 
-  .and('have.attr', 'src') 
-  .and('include', imageType)
-}
+     cy.get(elementSelector)
+     .should('be.visible') 
+     .and('have.attr', 'src') 
+     .and('include', imageType);
+});
 
 /**
      * Verify the number of the same element type image is visible in the DOM .
@@ -97,11 +113,15 @@ cy.get(elementSelector)
      * the value for aliasNumberElement have to come without @ in the variable value 
      */
 export const CheckElementNumber = (Alias, numberElement ) => {
-cy.log(`Thinking: Verificando que el numero de elementos visibles sea el correcto ...`)
-
-cy.get(`@${Alias}`).should('equal',numberElement)
+     cy.log(`Thinking: Verificando que el numero de elementos visibles sea el correcto ...`)
+     cy.get(`@${Alias}`)
+     .should('equal',numberElement);
 }
 
 
 
-
+export const ejemplo = CreateTask('Verificar ',(elementSelector, imageType ) => {
+     cy.get(elementSelector)
+    .contains(imageType)
+    .scrollIntoView({ block: 'center', inline: 'center' })
+});

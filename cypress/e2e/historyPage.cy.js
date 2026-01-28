@@ -5,16 +5,22 @@ import {
 
 import {
     showList,
-    click
+    click,
+    
 } from '@tasks/homeTask'
 
 import * as Tasks from '@tasks/historyTask'
 
 import * as Ui from '@ui/historyTarget'
 
+import { ElementVisible, CheckImageType} from '@questions/elementQuest'
+
+
 
 
 describe('Busqueda de la Pag History',()=>{
+const ASHE_ALIAS = 'asheElement';
+   
 beforeEach(()=>{
     cy.visit('es-es');
 
@@ -23,18 +29,15 @@ beforeEach(()=>{
     it('entramos en pag principal a busca la opcion de buscar historia',()=>{
         showList(NOTICIAS_LIST,'Noticias');
         click(NOTICIAS_ELEMENT,'HISTORIAS');
-        Tasks.SearchElement(Ui.LORE_ASHE,Ui.BUTTON('VER MÁS'),'element');
-        cy.get('@element').then(($enlace) => {
-    
-    // 1. Extraemos la URL del atributo 'href'
-    const urlDestino = $enlace.attr('href');
-    
-    cy.log(`Thinking: Navegando manualmente a -> ${urlDestino}`);
+        Tasks.SearchElement(Ui.LORE_ASHE,Ui.BUTTON('VER MÁS'),ASHE_ALIAS);
+        
+           cy.get(`@${ASHE_ALIAS}`).then(($enlace) => {
 
-    // 2. Navegamos directamente a esa URL (sin abrir pestañas nuevas)
-    // Nota: Si la URL es relativa (/es-es/noticias...), cy.visit funciona perfecto.
-    cy.visit(urlDestino);
-});
+                Tasks.falseClick($enlace);
+                ElementVisible(Ui.ASHE_IMAGE);
+                CheckImageType(Ui.ASHE_IMAGE,'jpg');
+        
+        });
     });
 
     
