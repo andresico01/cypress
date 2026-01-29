@@ -3,7 +3,7 @@ import * as HomeUI from '@ui/homeTarget'
 import * as Quest from '@questions/elementQuest'
 
 import * as Tasks from '@tasks/homeTask'
-import { CreateTask } from '@utils/imageEvidence';
+
 
 
 const WORD_SAVE = 'Guardar'; 
@@ -25,12 +25,7 @@ describe('Mi primera prueba en Cypress', () => {
     
    cy.get('[data-testid="card-category"]')
   .contains('Multimedia')
-  .then(($el) => {
-      const top = $el.offset().top;
-      const centerPosition = top - 300; 
-      cy.window().scrollTo(0, centerPosition, { duration: 0 });
-
-  })
+  .centerElement()
   .evidence('Screenshot perfecto y centrado'); // Tu captura
 
   });
