@@ -8,6 +8,8 @@ cypress/videos/
 # Reportes (Mochawesome u otros)
 cypress/reports/
 mochawesome-report/
+evidencia/reporte
+evidencia/screenshots
 
 # Variables de entorno (Claves secretas)
 .env
