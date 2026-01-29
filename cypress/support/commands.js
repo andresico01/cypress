@@ -39,3 +39,16 @@ Cypress.Commands.add('evidence', (nameTask) => {
       overwrite: false 
   });
 });
+
+Cypress.Commands.add('centerElement',{
+  prevSubject: true
+  }, (subject) => {
+    cy.wrap(subject).then(($el) => {
+      const top = $el.offset().top;
+      const centerPosition = top - (Cypress.config('viewportHeight') / 2);
+      cy.window().scrollTo(0, centerPosition, { duration: 0 });
+      cy.wait(300); 
+  })
+  return cy.wrap(subject);
+});
+

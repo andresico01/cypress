@@ -4,12 +4,14 @@ const webpackPreprocessor = require('@cypress/webpack-preprocessor');
 module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
+    reportDir: 'evidencia/reporte', 
     charts: true,             // Gráficos bonitos
     reportPageTitle: 'Reporte de Pruebas',
     embeddedScreenshots: true, // Fotos incrustadas (vital para compartir)
     inlineAssets: true,        // Todo en un solo HTML
   },
   e2e: {
+    screenshotsFolder: 'evidencia/screenshots',
     setupNodeEvents(on, config) {
       const options = {
         webpackOptions: require('./webpack.config.js'),
