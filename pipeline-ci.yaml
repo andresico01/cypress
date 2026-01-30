@@ -33,7 +33,7 @@ steps:
 - task: PublishBuildArtifacts@1
   condition: always() # ¡Vital! Se ejecuta aunque fallen los tests en el paso 3
   inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)/cypress/evidencia/' # Ajusta esta ruta a tu carpeta real de reportes
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/evidencia/' # Ajusta esta ruta a tu carpeta real de reportes
     ArtifactName: 'Reporte-Cypress-Descargable'
   displayName: '4A. Publicar Artefactos (ZIP)'
 
@@ -42,6 +42,6 @@ steps:
 - task: PublishHtmlReport@1
   condition: always()
   inputs:
-    reportDir: '$(System.DefaultWorkingDirectory)/cypress/evidencia/reporte/index.html'
+    reportDir: '$(System.DefaultWorkingDirectory)/evidencia/reporte/index.html'
     tabName: 'Reporte Cypress'
   displayName: '4B. Publicar Pestaña HTML'
