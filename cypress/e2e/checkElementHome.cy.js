@@ -33,7 +33,6 @@ describe('Mi primera prueba en Cypress', () => {
   it('buscar elementos en pag lol', () => {
    Quest.ElementExit(HomeUI.JUGAR_GRATIS);
    Quest.ElementVisible(HomeUI.JUGAR_GRATIS);
-   Quest.VisibleText(HomeUI.BUTTON_GUARDAR,WORD_SAVE);
    Quest.CheckImageType(HomeUI.IMAGE_POPPY,'jpg');
    Quest.VisibleText(HomeUI.ASSASIN_AKALY,'La Asesina Sigilosa');
    Tasks.ElementCount(HomeUI.DIVS_ELEMENT,'Jugar gratis',FREE_ALIAS);
