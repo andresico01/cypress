@@ -10,6 +10,10 @@ module.exports = defineConfig({
     embeddedScreenshots: true, // Fotos incrustadas (vital para compartir)
     inlineAssets: true,        // Todo en un solo HTML
   },
+  retries: {
+    runMode: 2, 
+    openMode: 0 
+  },
   e2e: {
     screenshotsFolder: 'evidencia/screenshots',
     setupNodeEvents(on, config) {
