@@ -17,6 +17,13 @@ module.exports = defineConfig({
   e2e: {
     screenshotsFolder: 'evidencia/screenshots',
     setupNodeEvents(on, config) {
+      on('before:browser:launch', (browser = {}, launchOptions) => {
+        if (browser.family === 'chromium' && browser.name !== 'electron') {
+          launchOptions.args.push('--disable-dev-shm-usage');
+          launchOptions.args.push('--disable-gpu');
+        }
+        return launchOptions;
+      });
       const options = {
         webpackOptions: require('./webpack.config.js'),
         watchOptions: {},
