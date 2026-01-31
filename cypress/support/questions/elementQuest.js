@@ -36,7 +36,6 @@ export const ElementNotExit = (elementSelector,textElement) => {
 
 /**
      * Verify the element is visible in the DOM .
-     *
      * @example
      * ✅ IDs: ElementVisible('#mi-boton')
      * ✅ Clases: ElementVisible('.btn-primary')
@@ -107,7 +106,6 @@ export const CheckImageType = CreateTask('Verificar que el elemento sea una imag
 
 /**
      * Verify the number of the same element type image is visible in the DOM .
-     *
      * @example
      * ✅ Alias: CheckElementNumber(aliasNumberElement,expectedNumber)
      * the value for aliasNumberElement have to come without @ in the variable value 
@@ -118,10 +116,3 @@ export const CheckElementNumber = (Alias, numberElement ) => {
      .should('equal',numberElement);
 }
 
-
-
-export const ejemplo = CreateTask('Verificar ',(elementSelector, imageType ) => {
-     cy.get(elementSelector)
-    .contains(imageType)
-    .scrollIntoView({ block: 'center', inline: 'center' })
-});
