@@ -6,6 +6,12 @@ This project contains End-to-End tests developed with Cypress for automated web 
 
 This automation suite is configured to run tests against the [League of Legends](https://www.leagueoflegends.com/) website. It includes examples of common Cypress commands and a basic structure for organizing test files, selectors, and reusable tasks.
 
+It also includes custom configurations for:
+* **Centralized Reporting:** HTML reports and screenshots are consolidated in a single directory.
+* **Create a custom fuction for cy:** Custon fuction that let us take a picture in the step that we need.
+* **Smart Scrolling:** Custom algorithms to handle non-scrollable elements.
+* **Webpack Aliases:** Simplified imports using `@tasks`, `@ui`, etc.
+
 ## Getting Started
 
 ### Prerequisites
@@ -34,20 +40,7 @@ This will open the Cypress interface, where you can see and run all the test fil
 ## Project Structure
 
 The project follows the standard Cypress folder structure:
-
-- **`cypress/`**
-  - **`e2e/`**: Contains the actual test files (`.cy.js`). The file `checkElementHome.cy.js` has tests for the home page.
-  - **`fixtures/`**: Used to store test data that can be used in the tests. `example.json` is the default fixture file.
-  - **`support/`**: Contains reusable code, custom commands, and global configurations.
-    - `commands.js`: Here you can add or overwrite Cypress commands.
-    - `e2e.js`: This file is executed before each test file.
-    - **`questions/`**: Custom folder for reusable assertion functions.
-    - **`tasks/`**: Custom folder for reusable sequences of actions or tasks.
-    - **`ui/`**: Custom folder to store UI element selectors.
-- **`cypress.config.js`**: Main Cypress configuration file. Here you can set the `baseUrl`, viewport size, and other global settings.
-- **`package.json`**: Lists the project's dependencies and scripts.
-- **`webpack.config.js`**: Webpack configuration for preprocessing files.
-
+```
 CypressProject/
 │   .babelrc
 │   .gitignore
@@ -61,15 +54,15 @@ CypressProject/
 │   webpack.config.js            # Path Aliases Configuration
 │
 ├── cypress/
-│   ├── e2e/                     # Test Specifications
+│   ├── e2e/                     # Contains the actual test files (`.cy.js`).
 │   │       checkElementHome.cy.js
 │   │       historyPage.cy.js
 │   │
-│   ├── fixtures/                # Static Data (JSON)
+│   ├── fixtures/                # Used to store test data that can be used in the tests. in this project is not used 
 │   │       example.json
 │   │
 │   └── support/                 # Support Code & Screenplay Pattern
-│       │   commands.js          # Custom Commands (e.g., cy.centerElement)
+│       │   commands.js          # Custom Commands (e.g., cy.centerElement,cy.evidence)
 │       │   e2e.js               # Global Hooks
 │       │
 │       ├── questions/           # Assertions (Validations)
@@ -93,3 +86,25 @@ CypressProject/
     └── screenshots/             # Embedded Screenshots
             checkElementHome.cy.js/
             historyPage.cy.js/
+```
+
+## ⛓️ CI/CD Pipeline Integration
+The project includes a pipeline-ci.yaml file configured for Azure DevOps. 
+It handles environment setup, execution, and artifact publication.
+ 1. Execute all the test case. 
+ 2. Create a report 
+ 3. save the report in the pipeline execution 
+
+* **pipeline execution:**
+<p align="center">
+  <img src="./readme/pipelineExecution.png" width="800" alt="Vista del Reporte HTML">
+</p>
+
+* **show report:**
+<p align="center">
+  <img src="./readme/htmlViewer.png" width="800" alt="Vista del Reporte HTML">
+</p>
+
+This project contains End-to-End tests developed with **Cypress**...
+
+
