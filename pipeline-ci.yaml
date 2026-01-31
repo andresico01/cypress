@@ -1,47 +1,28 @@
-# 1. DISPARADOR: Se ejecuta al hacer push a la rama 'main'
 trigger:
 - trunk
 
-# 2. AGENTE: Usamos Ubuntu (ya trae Chrome, Firefox y Edge listos)
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-# PASO 1: Instalar Node.js (Requisito para Cypress)
 - task: NodeTool@0
   inputs:
     versionSpec: '22.x'
   displayName: '1. Instalar Node.js'
 
-# PASO 2: Instalar dependencias
-# 'npm ci' es más rápido y seguro que 'npm install' para pipelines
 - script: npm ci
   displayName: '2. Instalar librerías del proyecto'
 
-# PASO 3: Ejecutar Pruebas Cypress
-# --headless: No abre ventana visual (obligatorio en CI)
-# --browser chrome: Fuerza el uso de Chrome
-# continueOnError: true -> IMPORTANTE. Si un test falla, deja que el pipeline siga para poder generar el reporte.
+
 - script: |
-    npx cypress run --browser chrome --headless
+    npn run test 
   displayName: '3. Ejecutar Cypress E2E'
   continueOnError: true
 
-# PASO 4 (Opción A): Guardar el reporte como "Artefacto" (Descargable)
-# Si NO instalaste la extensión del Marketplace, usa esto.
-# Te permitirá descargar un ZIP con el HTML y los videos desde el botón "Artifacts".
-- task: PublishBuildArtifacts@1
-  condition: always() # ¡Vital! Se ejecuta aunque fallen los tests en el paso 3
-  inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)/evidencia/' # Ajusta esta ruta a tu carpeta real de reportes
-    ArtifactName: 'Reporte-Cypress-Descargable'
-  displayName: '4A. Publicar Artefactos (ZIP)'
 
-# PASO 4 (Opción B): Publicar reporte visual (Solo si instalaste la extensión)
-# Descomenta las líneas de abajo si ya instalaste "Publish HTML Report"
 - task: PublishHtmlReport@1
   condition: always()
   inputs:
     reportDir: '$(System.DefaultWorkingDirectory)/evidencia/reporte/index.html'
     tabName: 'Reporte Cypress'
-  displayName: '4B. Publicar Pestaña HTML'
+  displayName: '4. Publicar Pestaña HTML'

@@ -44,6 +44,12 @@ const _scrollClick = CreateTask('scroll and click',() => {
 });
 
 
+/**
+     * Function used to find the url in the atrivute href, and open that url 
+     * in the same windows
+     * @example
+     * falseClick(webelement)
+     */
 export const falseClick = ($enlace) =>{
     const urlDestino = $enlace.attr('href');
     cy.log(`Thinking: Navegando manualmente a -> ${urlDestino}`);

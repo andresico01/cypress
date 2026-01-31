@@ -36,26 +36,33 @@ export const AliasForWebElement = (elementSelector,keyWord,alias) => {
       
 }
 
-
+/**
+     * Show list of elements linked to webElement
+     * @example
+     * ✅ IDs: showList('#mi-boton',textValue)
+     * ✅ Clases: showList('.btn-primary',textValue)
+     * ✅ Atributos: showList('[data-testid="login"]',textValue)
+     * ✅ Combinaciones: showList('form > div input[name="user"]',textValue)
+     */
 export const showList = CreateTask('Desplegar lista de opciones',(elementSelector,textElement) => {
     cy.log(`Thinking: dar click sobre boton {${textElement}}`)
     cy.get(elementSelector).contains(textElement).realHover();
 
 });
 
-
+/**
+     * Click in a webElement
+     * @example
+     * ✅ IDs: click('#mi-boton',textValue)
+     * ✅ Clases: click('.btn-primary',textValue)
+     * ✅ Atributos: click('[data-testid="login"]',textValue)
+     * ✅ Combinaciones: click('form > div input[name="user"]',textValue)
+     */
 export const click = (elementSelector,textElement) => {
     cy.log(`Thinking: dar click sobre boton {${textElement}}`)
     cy.get(elementSelector).contains(textElement).click();
 
 }    
 
-export const mechanicalClickOption = (optionText) => {
-    cy.log(`Thinking: Clic forzado en la opción oculta {${optionText}}`);
-    
-    // { force: true } desactiva la comprobación de visibilidad.
-    // Cypress buscará el enlace en el DOM (aunque esté display:none) y le dará clic.
-    cy.contains('a', optionText).click({ force: true });
-};
 
 

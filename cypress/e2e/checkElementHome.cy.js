@@ -22,33 +22,32 @@ describe('Mi primera prueba en Cypress', () => {
 
     it('ejemplo nuevo task creada para cy', () => {
 
-    
-   cy.get('[data-testid="card-category"]')
-  .contains('Multimedia')
-  .centerElement()
-  .evidence('Screenshot perfecto y centrado'); // Tu captura
+        cy.get('[data-testid="card-category"]')
+        .contains('Multimedia')
+        .centerElement()
+        .evidence('Screenshot perfecto y centrado');
 
-  });
+    });
 
-  it('buscar elementos en pag lol', () => {
-   Quest.ElementExit(HomeUI.JUGAR_GRATIS);
-   Quest.ElementVisible(HomeUI.JUGAR_GRATIS);
-   Quest.CheckImageType(HomeUI.IMAGE_POPPY,'jpg');
-   Quest.VisibleText(HomeUI.ASSASIN_AKALY,'La Asesina Sigilosa');
-   Tasks.ElementCount(HomeUI.DIVS_ELEMENT,'Jugar gratis',FREE_ALIAS);
-   Tasks.ElementCount(HomeUI.DIVS_ELEMENT,'Jugar ahora',NOW_ALIAS);
-   Quest.CheckElementNumber(NOW_ALIAS,3) ;
-   Quest.CheckElementNumber(FREE_ALIAS,2);
+    it('buscar elementos en pag lol', () => {
+        Quest.ElementExit(HomeUI.JUGAR_GRATIS);
+        Quest.ElementVisible(HomeUI.JUGAR_GRATIS);
+        Quest.CheckImageType(HomeUI.IMAGE_POPPY,'jpg');
+        Quest.VisibleText(HomeUI.ASSASIN_AKALY,'La Asesina Sigilosa');
+        Tasks.ElementCount(HomeUI.DIVS_ELEMENT,'Jugar gratis',FREE_ALIAS);
+        Tasks.ElementCount(HomeUI.DIVS_ELEMENT,'Jugar ahora',NOW_ALIAS);
+        Quest.CheckElementNumber(NOW_ALIAS,3) ;
+        Quest.CheckElementNumber(FREE_ALIAS,2);
 
-  });
+    });
 
-  it('buscar elementos en listas', () => {
-   Quest.VisibleText(HomeUI.NOTICIAS_LIST,NEWS);
-   Quest.ElementNotVisible(HomeUI.NOTICIAS_ELEMENT,HISTORY);
-   Quest.ElementNotExit(HomeUI.NOTICIAS_ELEMENT,'PATRICIO');
-   Tasks.showList(HomeUI.NOTICIAS_LIST,NEWS);
-   Quest.VisibleText(HomeUI.NOTICIAS_ELEMENT,HISTORY);
-  });
+    it('buscar elementos en listas', () => {
+        Quest.VisibleText(HomeUI.NOTICIAS_LIST,NEWS);
+        Quest.ElementNotVisible(HomeUI.NOTICIAS_ELEMENT,HISTORY);
+        Quest.ElementNotExit(HomeUI.NOTICIAS_ELEMENT,'PATRICIO');
+        Tasks.showList(HomeUI.NOTICIAS_LIST,NEWS);
+        Quest.VisibleText(HomeUI.NOTICIAS_ELEMENT,HISTORY);
+    });
   
   
 
