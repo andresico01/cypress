@@ -15,7 +15,7 @@ steps:
 
 
 - script: |
-    npn run test 
+    npx cypress run --browser chrome --headless
   displayName: '3. Ejecutar Cypress E2E'
   continueOnError: true
 
