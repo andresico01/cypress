@@ -112,4 +112,8 @@ It handles environment setup, execution, and artifact publication.
 
 This project contains End-to-End tests developed with **Cypress**...
 
+## **Autor**
+Lead Team QC | QA & Test automation
+LinkedIn: [https://www.linkedin.com/in/andresrojasdg/](https://www.linkedin.com/in/andresrojasdg/)
+
 
