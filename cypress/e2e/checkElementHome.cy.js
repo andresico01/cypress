@@ -26,7 +26,7 @@ describe('Mi primera prueba en Cypress', () => {
         .contains('Multimedia')
         .centerElement()
         .evidence('Screenshot perfecto y centrado');
-        
+
     });
 
     it('buscar elementos en pag lol', () => {
