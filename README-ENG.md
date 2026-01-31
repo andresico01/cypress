@@ -52,6 +52,7 @@ CypressProject/
 │   pipeline-ci.yaml             # CI/CD Pipeline Definition
 │   README-ENG.md
 │   webpack.config.js            # Path Aliases Configuration
+|   
 │
 ├── cypress/
 │   ├── e2e/                     # Contains the actual test files (`.cy.js`).
@@ -79,13 +80,17 @@ CypressProject/
 │       └── utils/               # Helpers & Wrappers
 │               imageEvidence.js
 │
-└── evidencia/                   # Reports Artifacts
-    ├── reporte/
-    │       index.html           # Mochawesome HTML Report
-    │
-    └── screenshots/             # Embedded Screenshots
-            checkElementHome.cy.js/
-            historyPage.cy.js/
++---evidencia
+|   +---reporte
+|   |       index.html
+|   |       
+|   \---screenshots
+|       +---checkElementHome.cy.js
+|       \---historyPage.cy.js
+\---readme
+        htmlViewer.png
+        pipelineExecution.png
+        
 ```
 
 ## ⛓️ CI/CD Pipeline Integration
