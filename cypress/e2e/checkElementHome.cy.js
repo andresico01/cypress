@@ -1,12 +1,11 @@
 import * as HomeUI from '@ui/homeTarget'
 
-import * as Quest from '@questions/elementQuest'
+import * as Quest from '@questions/elementQuest' 
 
 import * as Tasks from '@tasks/homeTask'
 
 
 
-const WORD_SAVE = 'Guardar'; 
 const HISTORY = 'HISTORIAS';
 const NEWS = 'Noticias';
 const FREE_ALIAS = 'gratisElement';
