@@ -36,7 +36,7 @@ module.exports = defineConfig({
     baseUrl: 'https://www.leagueoflegends.com/', // Tu URL
     viewportWidth: 1920,
     viewportHeight: 1080,
-    defaultCommandTimeout: 10000,
+    defaultCommandTimeout: 15000,
     chromeWebSecurity: false // Importante para evitar líos de cross-origin
   },
 });
