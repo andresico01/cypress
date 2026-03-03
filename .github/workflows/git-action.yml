@@ -8,33 +8,8 @@ permissions:
   contents: write
 
 jobs:
-  # Job 1: Instalación de dependencias
-  install:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout del código
-        uses: actions/checkout@v4
-
-      - name: Configurar Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-
-      - name: Cache de dependencias
-        id: cache-npm
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Instalar librerías
-        run: npm ci
-      - name: Finalizar instalación
-        run: echo "Instalación de dependencias completada"  
-
   # Job 2: Ejecución de pruebas
-  test:
-    needs: install # Este job espera a que el primero termine
+  automation-workflow:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout del código
@@ -52,16 +27,12 @@ jobs:
         run: npx cypress run --browser chrome --headless
         continue-on-error: true
 
-      - name: Publicar Reporte HTML
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: reporte-cypress
-          path: evidencia/reporte/index.html  
-
       - name: Deploy Report to GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./evidencia/reporte     
+
+      - name: Ejecutar Cypress con Record
+        run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}    
