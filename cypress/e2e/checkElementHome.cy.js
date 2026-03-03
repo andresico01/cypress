@@ -20,11 +20,13 @@ describe('Mi primera prueba en Cypress', () => {
     })
 
     it('ejemplo nuevo task creada para cy', () => {
-
+        const secretValue = Cypress.env('secret_value');
         cy.get('[data-testid="card-category"]')
         .contains('Actualizaciones del juego')
         .centerElement()
         .evidence('Screenshot perfecto y centrado');
+
+        cy.log(`El valor secreto es: ${secretValue}`);
 
     });
 

@@ -25,6 +25,8 @@ jobs:
 
       - name: Ejecutar Cypress E2E
         run: npx cypress run --browser chrome --headless
+        env:
+          CYPRESS_SECRET_VALUE: ${{ secrets.SECRET_VALUE }}
         continue-on-error: true
 
       - name: Deploy Report to GitHub Pages
