@@ -6,9 +6,53 @@ on:
     branches: [ trunk, 'feature/**' ]
 
 jobs:
-  build:
+  # Job 1: Instalación de dependencias
+  install:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      run: echo "Checking out code..."
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Cache de dependencias
+        id: cache-npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Instalar librerías
+        run: npm ci
+      - name: Finalizar instalación
+        run: echo "Instalación de dependencias completada"  
+
+  # Job 2: Ejecución de pruebas
+  test:
+    needs: install # Este job espera a que el primero termine
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Reinstalar rápido desde cache (Cypress necesita esto)
+        run: npm ci 
+
+      - name: Ejecutar Cypress E2E
+        run: npx cypress run --browser chrome --headless
+        continue-on-error: true
+
+      - name: Publicar Reporte HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reporte-cypress
+          path: evidencia/reporte/index.html        
