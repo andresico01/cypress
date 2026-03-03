@@ -22,7 +22,7 @@ describe('Mi primera prueba en Cypress', () => {
     it('ejemplo nuevo task creada para cy', () => {
 
         cy.get('[data-testid="card-category"]')
-        .contains('Multimedia')
+        .contains('Actualizaciones del juego')
         .centerElement()
         .evidence('Screenshot perfecto y centrado');
 
