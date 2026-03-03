@@ -33,6 +33,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./evidencia/reporte     
-
-      - name: Ejecutar Cypress con Record
-        run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}    
