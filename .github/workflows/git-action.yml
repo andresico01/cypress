@@ -26,7 +26,7 @@ jobs:
         run: npx cypress run --browser chrome --headless
         env:
           CYPRESS_SECRET_VALUE: ${{ secrets.SECRET_VALUE }}
-          CYPRESS_VARIABLE_REPO: ${{ secrets.VARIABLE_REPO }}
+          CYPRESS_VARIABLE_REPO: ${{ vars.VARIABLE_REPO }}
         continue-on-error: true
 
       - name: Deploy Report to GitHub Pages
