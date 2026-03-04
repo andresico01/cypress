@@ -17,6 +17,7 @@ module.exports = defineConfig({
   e2e: {
     screenshotsFolder: 'evidencia/screenshots',
     setupNodeEvents(on, config) {
+      
       on('before:browser:launch', (browser = {}, launchOptions) => {
         if (browser.family === 'chromium' && browser.name !== 'electron') {
           launchOptions.args.push('--disable-dev-shm-usage');
@@ -30,13 +31,17 @@ module.exports = defineConfig({
       };
       on('file:preprocessor', webpackPreprocessor(options));
       require('cypress-mochawesome-reporter/plugin')(on);
+      
+      console.log('Cypress ENV:', process.env.CYPRESS_SECRET_VALUE);
+      config.env.SECRET_VALUE = process.env.CYPRESS_SECRET_VALUE || config.env.SECRET_VALUE;
+      console.log('Cypress ENV:', process.env.CYPRESS_SECRET_VALUE);
       return config;
     },
     
     baseUrl: 'https://www.leagueoflegends.com/', // Tu URL
     viewportWidth: 1920,
     viewportHeight: 1080,
-    defaultCommandTimeout: 15000,
+    defaultCommandTimeout: 18000,
     chromeWebSecurity: false // Importante para evitar líos de cross-origin
   },
 });

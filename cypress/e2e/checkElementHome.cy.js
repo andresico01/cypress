@@ -14,17 +14,21 @@ const NOW_ALIAS = 'ahoraElement';
 
 
 describe('Mi primera prueba en Cypress', () => {
+    const secretValue = Cypress.env('SECRET_VALUE');
+    
     beforeEach(()=>{
         cy.visit('es-es');
         
     })
 
     it('ejemplo nuevo task creada para cy', () => {
-
+        cy.log(`valor secreto: ${secretValue}`);
         cy.get('[data-testid="card-category"]')
-        .contains('Multimedia')
+        .contains('Actualizaciones del juego')
         .centerElement()
-        .evidence('Screenshot perfecto y centrado');
+        .evidence('Screenshot perfecto y centrado ');
+     
+    
 
     });
 
