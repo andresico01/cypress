@@ -11,6 +11,7 @@ jobs:
   # Job 2: Ejecución de pruebas
   automation-workflow:
     runs-on: ubuntu-latest
+    environment: Transversal
     steps:
       - name: Checkout del código
         uses: actions/checkout@v4
