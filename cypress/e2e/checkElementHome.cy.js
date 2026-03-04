@@ -21,7 +21,7 @@ describe('Mi primera prueba en Cypress', () => {
         
     })
 
-    it('ejemplo nuevo task creada para cy', () => {
+    it(`ejemplo nuevo task creada para cy y varibales de ambiente ${secretValue}`, () => {
         cy.log(`valor secreto: ${secretValue}`);
         cy.get('[data-testid="card-category"]')
         .contains('Actualizaciones del juego')
