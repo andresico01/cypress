@@ -32,9 +32,11 @@ module.exports = defineConfig({
       on('file:preprocessor', webpackPreprocessor(options));
       require('cypress-mochawesome-reporter/plugin')(on);
       
-      console.log('Cypress ENV:', process.env.CYPRESS_SECRET_VALUE);
+      console.log('Cypress variable ENV:', process.env.CYPRESS_SECRET_VALUE);
+      console.log('Cypress variable REPO:', process.env.CYPRESS_VARIABLE_REPO);
       config.env.SECRET_VALUE = process.env.CYPRESS_SECRET_VALUE || config.env.SECRET_VALUE;
-      console.log('Cypress ENV:', process.env.CYPRESS_SECRET_VALUE);
+      config.env.VARIABLE_REPO = process.env.CYPRESS_VARIABLE_REPO || config.env.VARIABLE_REPO;
+      
       return config;
     },
     

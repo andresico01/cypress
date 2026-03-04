@@ -2,8 +2,6 @@ name: Prueba concepto
 on:
   push:
     branches: [ trunk, 'feature/**' ]
-  pull_request:
-    branches: [ trunk, 'feature/**' ]
 permissions:
   contents: write
 
@@ -11,6 +9,7 @@ jobs:
   # Job 2: Ejecución de pruebas
   automation-workflow:
     runs-on: ubuntu-latest
+    environment: Transversal
     steps:
       - name: Checkout del código
         uses: actions/checkout@v4
@@ -27,7 +26,7 @@ jobs:
         run: npx cypress run --browser chrome --headless
         env:
           CYPRESS_SECRET_VALUE: ${{ secrets.SECRET_VALUE }}
-        continue-on-error: true
+          CYPRESS_VARIABLE_REPO: ${{ vars.VARIABLE_REPO }}
 
       - name: Deploy Report to GitHub Pages
         if: always()

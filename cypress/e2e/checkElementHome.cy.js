@@ -15,14 +15,16 @@ const NOW_ALIAS = 'ahoraElement';
 
 describe('Mi primera prueba en Cypress', () => {
     const secretValue = Cypress.env('SECRET_VALUE');
+    const variableRepo = Cypress.env('VARIABLE_REPO');
     
     beforeEach(()=>{
         cy.visit('es-es');
         
     })
 
-    it('ejemplo nuevo task creada para cy', () => {
+    it(`ejemplo nuevo task creada para cy y varibales  secreta de ambiente ${secretValue} variable normal de repo ${variableRepo}`, () => {
         cy.log(`valor secreto: ${secretValue}`);
+        cy.log(`variable repo: ${variableRepo}`);
         cy.get('[data-testid="card-category"]')
         .contains('Actualizaciones del juego')
         .centerElement()
