@@ -28,11 +28,11 @@ Necesita tener Node.js y npm instalados en su equipo.
     ```
 ## Ejecución de las pruebas
 
-Para ejecutar las pruebas, puede usar Cypress Test Runner. Ábralo con el siguiente comando:
-    ```bash
+Para ejecutar las pruebas, puede usar alguno de estos dos comandos.:
+    ```bash o powershell
     npx cypress run --browser chrome --headless --spec 'cypress/e2e/test.cy.js'
     o 
-    npm run test-pruebanpm 
+    npm run test-prueba
     ```
 
-Esto abrirá la interfaz de Cypress, donde podrá ver y ejecutar todos los archivos de prueba (`.cy.js`) que se encuentran en el directorio `cypress/e2e` y ejecutar un script para ejecutar la prueba:
+Esto abrirá la interfaz de Cypress, donde podrá ver y ejecutar todos los archivos de prueba (`.cy.js`) que se encuentran en el directorio `cypress/e2e` al terminar ejecucion se guarda reporte en ruta `{Ruta local}\cypress\evidencia\reporte\index.html`
