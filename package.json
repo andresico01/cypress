@@ -4,7 +4,8 @@
   "description": "ejercicio de aprendizaje cypress",
   "main": "index.js",
   "scripts": {
-    "test": " npx cypress run --browser chrome --headless "
+    "test": " npx cypress run --browser chrome --headless ",
+    "test-prueba" : "npx cypress run --browser chrome --headless --spec 'cypress/e2e/test.cy.js'"
   },
   "keywords": [],
   "author": "",

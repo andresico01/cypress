@@ -40,7 +40,7 @@ module.exports = defineConfig({
       return config;
     },
     
-    baseUrl: 'https://www.leagueoflegends.com/', // Tu URL
+    baseUrl: 'http://localhost:5173/', // Tu URL
     viewportWidth: 1920,
     viewportHeight: 1080,
     defaultCommandTimeout: 18000,
