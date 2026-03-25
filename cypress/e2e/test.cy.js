@@ -1,5 +1,6 @@
 import * as UI from "@ui/moneyTest";
 import * as MoneyTask from "@tasks/moneyTask";
+import {checkSuccessMessage} from "@questions/elementQuest";
 
 
 const AMOUNT = 100;
@@ -22,9 +23,7 @@ it('entramos en pag principal de conversor de monedas',()=>{
         let expectedAmount = BALANCE_TOTAL - AMOUNT; 
         MoneyTask.setMony(UI.ENTRADA_DINERO,AMOUNT);
         MoneyTask.enter(UI.ENTER_BOTON);
-        cy.get(UI.TEXTO_EXITOSO).should('be.visible');
-        cy.get(UI.MESSAGE_SUCCESS).should('have.text', '¡Conversión Exitosa!');
-        cy.get(UI.CONVERSION_RESULT).should('have.text', `Nuevo balance: ${expectedAmount} USDC`);
+        checkSuccessMessage(expectedAmount);
         
      
         });
