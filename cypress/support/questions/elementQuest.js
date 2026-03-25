@@ -1,4 +1,5 @@
 import {CreateTask} from '@utils/imageEvidence'
+import * as UI from "@ui/moneyTest";
 
 /**
      * Verify the element exist in the DOM .
@@ -115,4 +116,14 @@ export const CheckElementNumber = (Alias, numberElement ) => {
      cy.get(`@${Alias}`)
      .should('equal',numberElement);
 }
+
+export const checkSuccessMessage = CreateTask('Verificar mensaje de exito',(expectedAmount) => {
+  
+        cy.log('Se valida el mensaje de exito');
+        cy.get(UI.TEXTO_EXITOSO)
+        .should('be.visible');
+        cy.get(UI.MESSAGE_SUCCESS).should('have.text', '¡Conversión Exitosa!');
+        cy.get(UI.CONVERSION_RESULT).should('have.text', `Nuevo balance: ${expectedAmount} USDC`);
+
+})
 
